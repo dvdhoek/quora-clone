@@ -5,6 +5,9 @@ class User <ActiveRecord::Base
 	attr_accessor :password
 	include BCrypt
 
+	has_many :questions
+	has_many :answers
+	
 	def password
 		@password ||= Password.new(encrypted_password)
 	end

@@ -221,13 +221,22 @@
 .navbar-default .navbar-offcanvas {
   background-color: #f8f8f8;
   border-color: #e7e7e7;
+  position: fixed;
+  width: 100%;
 }
 .navmenu-default .navmenu-brand,
 .navbar-default .navbar-offcanvas .navmenu-brand {
   color: #777;
 }
 .navmenu-default .navmenu-brand:hover,
-.navbar-default .navbar-offcanvas .navmenu-brand:hover,
+
+.navbar-default {
+    background-color: #f8f8f8;
+    border-color: #E7E7E6;
+    position: fixed;
+    width: 100%;
+}
+ .navbar-offcanvas .navmenu-brand:hover,
 .navmenu-default .navmenu-brand:focus,
 .navbar-default .navbar-offcanvas .navmenu-brand:focus {
   color: #5e5e5e;

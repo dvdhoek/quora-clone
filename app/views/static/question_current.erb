@@ -1,0 +1,9 @@
+<center> 
+	<%= @question.question %>
+ 	<%= @question.details %> 
+
+<form method=post action='/answer'>
+			<input type=text placeholder = "Answer here" name ="answer">
+			<input type=submit value = "Answer"> 
+		</form>
+</center>

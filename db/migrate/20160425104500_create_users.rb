@@ -8,8 +8,9 @@ class CreateUsers < ActiveRecord::Migration
 			x.string :email
 			x.string :first_name
 			x.string :last_name
-
 			x.timestamps null: false
 		end
 	end
 end
+
+# x.integer :click_count, default: 0

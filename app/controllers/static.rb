@@ -6,4 +6,11 @@ enable :sessions
 
 get '/' do
   erb :"static/index"
+
+end
+
+
+
+get '/*' do
+	redirect '/'
 end

@@ -20,6 +20,8 @@ require "sinatra/reloader" if development?
 	#password hash
 require 'bcrypt'
 
+require 'byebug'
+
 	# embedded ruby
 require 'erb'
 require 'uri'

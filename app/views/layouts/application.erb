@@ -1,8 +1,9 @@
 <html>
 	<head>
 		<title>Sinatra Framework</title>
+
 	</head>
-	<h1> Welcome to Quora </h1>
+	<h1> Welcome <%="#{session[:header]}"%></h1>
 		<%= yield %>
 	</body>
 </html>

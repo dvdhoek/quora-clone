@@ -1,3 +1,5 @@
 class Question <ActiveRecord::Base
-	has_one :user
+	belongs_to :user
+
+	has_many :answers
 end

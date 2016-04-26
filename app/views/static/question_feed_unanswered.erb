@@ -1,0 +1,17 @@
+<% @questions.each do |question| %>
+  <% if question.answers.first%>
+  <% else %>
+      <div>
+        <%= question.question %>
+      </div>
+        <br>
+      <div>
+        <%= question.details %>  
+      </div>
+        <br>
+      <br>
+      <br>
+      <br>
+    <% end %> 
+  <% end %> 
+

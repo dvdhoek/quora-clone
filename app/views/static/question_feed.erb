@@ -1,9 +1,8 @@
 
-
 <body class="main">
 <% @questions.each do |question| %>
   <% if question.answers.first %> 
-    <div class="container" id="bootstrap-overrides">
+    <div class="container" id="bootstrapoverrides">
       <h3><%= question.question %></h3>
         <p><%= question.answers.first.answer %></p>
               <form method=post action="/add_answer/<%= question.id %>" >

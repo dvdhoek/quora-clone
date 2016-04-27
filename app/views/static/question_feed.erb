@@ -2,19 +2,21 @@
 <body class="main">
 <% @questions.each do |question| %>
   <% if question.answers.first %> 
-    <div class="container" id="bootstrapoverrides">
-      <h3><%= question.question %></h3>
+    <div class="container" id="body-feed">
+      <h3 id="question-feed"><%= question.question %></h3>
+        <p id="name-first-answer"><%= User.find(question.user_id).first_name %></p>
         <p><%= question.answers.first.answer %></p>
               <form method=post action="/add_answer/<%= question.id %>" >
                 <input type=text placeholder = "Answer here" name="answer">
                 <input type=submit value="Add answer">
               </form>
-          <button type="button" data-toggle="collapse" data-target="#answers<%=question.id %>">Show all answers</button>
+          <button type="button" id ="show-button" data-toggle="collapse" data-target="#answers<%=question.id %>">Show all answers</button>
             <div id="answers<%=question.id %>" class="collapse out">
                 <% question.answers.each do |answer| %>  
+              <p id="answer-name-feed"> <%= User.find(answer.user_id).first_name %> </p>
               <p> <%= answer.answer %> </p>
-                <form method=post action="/upvote_answer/<%= question.answers.first.id %>" >
-                  <input type=submit value="|<%= question.answers.first.upvotes_answer %>| Upvote answer">
+                <form method=post action="/upvote_answer/<%= answer.id %>" >
+                  <input type=submit value="|<%= answer.upvotes_answer %>| Upvote answer">
                 </form>
             <% end %>
       </div>

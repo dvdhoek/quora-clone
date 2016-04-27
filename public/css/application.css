@@ -1,4 +1,68 @@
-#bootstrapoverrides {
+#body-feed {
 	width: 600px;
+}
+
+#navbar {
+	background-color: white;
+}
+
+#show-button {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+#name-button {
+	margin-right: 80px;
+}
+
+#search-bar {
+	width: 350px;
+}
+
+#quora-button {
+	margin-left: 80px;
+}
+
+#question-feed {
+	border-bottom: solid;
+	border-width: 1px;
+	border-color: #FF0000;
+}
+
+#name-first-answer {
+	font-style: italic;
+}
+
+#answer-name-feed {
+	font-style: italic;
+	border-bottom: solid;
+	border-width: 0.5px;
+	border-color: #FF0000;
+	margin-top: 25px;
+}
+
+#login-div {
+	border: solid;
+	border-width: 1px;
+	width: 600px;
+	height: 400px;
+	align: center;
+	margin-top: 120px;
+}
+
+#align-right {
+	text-align: right;
+}
+
+#align-left {
+	text-align: left;
+}
+
+#index-form {
+	padding-left: 10px;
+	margin-bottom: 10px;
+	background-color: #EEE;
+	border-radius: 4px;
+	border: transparent;
 }
 

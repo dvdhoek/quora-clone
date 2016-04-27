@@ -32,7 +32,7 @@ get '/user_home' do
 		erb :'static/user_home'
 end
 
-post '/logout' do
+get '/logout' do
 	session[:user] = false
 	session[:header] = "to Quora"
 		"Logout succesful"

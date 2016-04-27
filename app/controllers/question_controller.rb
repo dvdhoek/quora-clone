@@ -9,6 +9,11 @@ get '/question_feed' do
 	erb :'static/question_feed'
 end
 
+get'/question_feed_unanswered' do
+	@questions = Question.all
+	erb :"static/question_feed_unanswered"
+end
+
 get '/question*' do 
 	@question = Question.find_by(id: params[:splat])
 	session[:question_id] = @question.id
@@ -34,6 +39,7 @@ post '/add_answer/:question_id' do
 end
 
 post '/upvote_answer/:answer_id' do
+	byebug
 	@answer = Answer.find(params[:answer_id])
 	@answer.upvotes_answer += 1
 	@answer.save

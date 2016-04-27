@@ -2,7 +2,14 @@ require 'bcrypt'
 require 'byebug'
 
 class User <ActiveRecord::Base
-	attr_accessor :password
+	include ActiveModel::Validations
+
+    validates :email, presence: true
+    validates :first_name, presence: true
+    validates :last_name, presence: true
+    validates :username, presence: true
+    validates :password, presence: true
+    
 	include BCrypt
 
 	has_many :questions

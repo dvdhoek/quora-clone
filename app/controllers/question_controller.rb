@@ -1,3 +1,5 @@
+require 'sinatra/flash'
+
 post '/add_question' do
 	@question = Question.new(question: params[:question], details: params[:details], user_id: session[:user_id])
 	@question.save
@@ -5,17 +7,17 @@ post '/add_question' do
 end
 
 get '/question_feed' do
-	@questions = Question.all 
-	erb :'static/question_feed'
+		@questions = Question.all 
+		erb :'static/question_feed'
 end
 
 get'/question_feed_unanswered' do
-	@questions = Question.all
-	erb :"static/question_feed_unanswered"
+		@questions = Question.all
+		erb :"static/question_feed_unanswered"
 end
 
 get '/question*' do 
-	@question = Question.find_by(id: params[:splat])
+	@questions = Question.find_by(id: params[:splat])
 	session[:question_id] = @question.id
 	erb :'static/question_current'
 end

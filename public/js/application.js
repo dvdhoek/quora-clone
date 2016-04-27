@@ -1,11 +1,7 @@
-var form = $(this),
-    formData = form.serialize(),
-    formUrl = form.attr('action'),
-    formMethod = form.attr('method'), 
-    responseMsg = $('#signup-response')
+$(document).ready(function() {
+	$('#error-signup').delay(2500).fadeTo(1000, 0);
+})
 
-//show response message waiting
-responseMsg.hide()
-           .addClass('response-waiting')
-           .text('Please Wait...')
-           .fadeIn(200);
+$(document).ready(function() {
+	$('#login-succes').delay(2500).fadeTo(1000, 0);
+})

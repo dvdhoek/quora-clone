@@ -66,3 +66,62 @@
 	border: transparent;
 }
 
+#error-signup {
+	margin-top: 10px;
+	margin-left: 30px;
+	background-color: #ff0000;
+	opacity: 0.3;
+	color: white;
+	width: 200px;
+	border: solid;
+	border-radius: 8px;
+	border-color: white;
+	text-align: center;
+}
+
+#login-succes {
+	margin-top: 50px;
+	background-color: #ff0000;
+	opacity: 0.3;
+	color: white;
+	width: 200px;
+	border: solid;
+	border-radius: 8px;
+	border-color: white;
+}
+
+#profile {
+	margin-left: 50px;
+	padding-left: 50px;
+}
+
+#user-div {
+	border: solid;
+	border-width: 1px;
+	width: 600px;
+	height: 200px;
+	align: center;
+	margin-top: 60px;
+	padding-top: 20px;
+	margin-bottom: 40px;
+}
+
+#question-bar {
+	width: 570px;
+	margin: 15px;
+	margin-left: 0px;
+	height: 40px;
+
+}
+
+#detail-bar {
+	width: 570px;
+	margin: 15px;
+	margin-left: 0px;
+	height: 80px;
+}
+
+
+
+
+  

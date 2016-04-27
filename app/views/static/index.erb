@@ -12,6 +12,9 @@
 <div id="align-left">
 
 	<div style="width: 50%; float: left; text-align: center">
+	<% if flash[:alert]%>
+	<p id="error-signup"> Please fill in all the fields </p>
+	<% end %> 
 	<h3>SIGNUP</h3>
 		<form method=post action='/signup'>
 			<input id="index-form" type=text placeholder="Username" name="username"><br>

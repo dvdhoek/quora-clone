@@ -1,18 +1,56 @@
 <center>
-succes wow you are logged in !! You've made it!!
-	<form method=post action='/logout'>
-		<input type=submit value = "Logout"> 
-	</form>
 
-	<form method=post action='/feed'>
-		<input type=submit value = "Feed"> 
-	</form>
+<div id="user-div"> 
+	<div style="width: 50%; float: left; text-align: center; padding-top: 15px">
+		<img src="http://natres.iut.ac.ir/sites/natres.iut.ac.ir/files/default_images/tpl_img_1.png" alt="HTML5 Icon" style="width:128px;height:128px;"> 
+	</div>
 
-	<h2> Add question </h2>
+	<div style="width: 50%; float: right; text-align: left; padding: 20px; border-left: solid" id="border-left">
+		<p>First name:<%= session[:user].first_name %></p>
+		<p>Last name: <%= session[:user].last_name %></p>
+		<p>Email: <%= session[:user].email %></p>
+		<p>Username: <%= session[:user].username %></p>
+	</div>
+</div>
+</center>
+
+
+<body class="main">
+	<div class = "container" id="body-feed">
+		<h3 id="question-feed"> Add question </h3>
 	<form method=post action='/add_question'>
-		<input type=text placeholder = "Question" name ="question"><br>
-		<input type=text placeholder = "Details" name ="details"><br>
+		<input id ="question-bar" type=text placeholder = "Question" name ="question"><br>
+		<input id ="detail-bar" type=text placeholder = "Details" name ="details"><br>
 		<input type=submit value = "Add"> 
 	</form>
+	</div>
+<div style="margin-top: 30px"
+<% @questions.each do |question| %>
+  <% if question.user_id == session[:user].id && question.answers.first %> 
 
-</center>
+    <div class="container" id="body-feed">
+      <h3 id="question-feed"><%= question.question %></h3>
+        <p id="name-first-answer"><%= User.find(question.user_id).first_name %></p>
+        <p><%= question.answers.first.answer %></p>
+              <form method=post action="/add_answer/<%= question.id %>" >
+                <input type=text placeholder = "Answer here" name="answer">
+                <input type=submit value="Add answer">
+              </form>
+          <button type="button" id ="show-button" data-toggle="collapse" data-target="#answers<%=question.id %>">Show all answers</button>
+            <div id="answers<%=question.id %>" class="collapse out">
+                <% question.answers.each do |answer| %>  
+              <p id="answer-name-feed"> <%= User.find(answer.user_id).first_name %> </p>
+              <p> <%= answer.answer %> </p>
+                <form method=post action="/upvote_answer/<%= answer.id %>" >
+                  <input type=submit value="|<%= answer.upvotes_answer %>| Upvote answer">
+                </form>
+            <% end %>
+      </div>
+    </div>
+    </div>
+    <% end %>
+  <% end %>
+</body>
+
+
+

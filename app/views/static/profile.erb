@@ -5,23 +5,23 @@
 		</div>
 
 		<div style="width: 50%; float: right; text-align: left; padding: 20px; border-left: solid" id="border-left">
-			<p>First name: <%= session[:user].first_name %></p>
-			<p>Last name: <%= session[:user].last_name %></p>
-			<p>Email: <%= session[:user].email %></p>
-			<p>Username: <%= session[:user].username %></p>
+			<p>First name: <%= @user_profile.first_name %></p>
+			<p>Last name: <%= @user_profile.last_name %></p>
+			<p>Email: <%= @user_profile.email %></p>
+			<p>Username: <%= @user_profile.username %></p>
 		</div>
 	</div>
 </center>
 
 <body class="main">
-	<center> <h2 id="user-feed"> My Questions </h2> </center>
+	<center> <h2 id="user-feed"> <%= @user_profile.first_name %>'s Questions </h2> </center>
 
 	<div style="margin-top: 30px">
 		<% @questions.each do |question| %>
-  		<% if question.user_id == session[:user].id && question.answers.first %> 
+  		<% if question.user_id == @user_profile.id && question.answers.first %> 
 				<div class="container" id="body-feed">
       	<h3 id="question-feed"><%= question.question %></h3>
-        <p id="name-first-answer"><%= User.find(question.user_id).first_name %></p>
+        <p id="name-first-answer"><%= User.find(Question.find(Answer.find(question.id)).id).first_name %></p>
         <p><%= question.answers.first.answer %></p>
           <form method=post action="/add_answer/<%= question.id %>" >
             <input type=text placeholder = "Answer here" name="answer">
@@ -44,11 +44,11 @@
 </body>
 
 <body class="main">
-	<center> <h2 id="user-feed"> My Unanswered Questions </h2> </center>
+	<center> <h2 id="user-feed"> <%= @user_profile.first_name %>'s Unanswered Questions </h2> </center>
 
 	<div style="margin-top: 30px">
 		<% @questions.each do |question| %>
-  		<% if question.user_id == session[:user].id && question.answers.first == nil %> 
+  		<% if question.user_id == @user_profile.id && question.answers.first == nil %> 
 				<div class="container" id="body-feed">
       	<h3 id="question-feed"><%= question.question %></h3>
         <p id="name-first-answer"><%= User.find(question.user_id).first_name %></p>
@@ -65,13 +65,14 @@
 </body>
 
 <body class="main">
-	<center> <h2 id="user-feed"> My Answers </h2> </center>
+	<center> <h2 id="user-feed"> <%= @user_profile.first_name %>'s Answers </h2> </center>
 
 	<div style="margin-top: 30px">
 		<% @answers.each do |answer| %>
-  		<% if answer.user_id == session[:user].id && answer.answer != nil %> 
+  		<% if answer.user_id == @user_profile.id && answer.answer != nil %> 
 				<div class="container" id="body-feed">
       	<h3 id="question-feed"><%= Question.find(answer.question_id).question %></h3>
+        <p> <%= User.find(answer.user_id).first_name %> </p>
         <p id="name-first-answer"><%= answer.answer %></p>
           <form method=post action="/add_answer/<%= Question.find(answer.question_id).id %>" >
             <input type=text placeholder = "Answer here" name="answer">

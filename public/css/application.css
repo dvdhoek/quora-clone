@@ -122,6 +122,32 @@
 }
 
 
+#ask-question-dropdown {
+	width: 600px;
+}
 
+#ask-question-btn {
+	margin-left: 200px;
+  }
 
-  
+#body-yield {
+	margin-top: 60px;
+}
+
+#next_button {
+	width: 120px;
+	height: 25px;
+	border: solid;
+	border-color: #ff0000;
+	background-color: #ff0000;
+	opacity: 0.3;
+	color: white;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	border-radius: 6px;
+}
+
+#answer-button-feed {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}

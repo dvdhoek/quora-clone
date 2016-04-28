@@ -1,19 +1,19 @@
 
 <body class="main">
-<% @questions.each do |question| %>
-  <% if question.answers.first %>
-  <% else %>
-    <div class="container" id="body-feed">
-      <h3 id="question-feed"><%= question.question %></h3>
+  <% @questions.each do |question| %>
+    <% if question.answers.first %>
+    <% else %>
+      <div class="container" id="body-feed">
+        <h3 id="question-feed"><%= question.question %></h3>
         <p><%= question.details %></p>
-              <form method=post action="/add_answer/<%= question.id %>" >
-                <input type=text placeholder = "Answer here" name="answer">
-                <input type=submit value="Add answer">
-              </form>
-            <% end %>
+          <form method=post action="/add_answer/<%= question.id %>" >
+            <input type=text placeholder = "Answer here" name="answer">
+            <input id="answer-button-feed" type=submit value="Add answer">
+          </form>
+        <% end %>
       </div>
     </div>
-    <% end %>
-
+  <% end %>
+<center><a id = "next_button" href="/question_feed_unanswered/<%= @next_page %>">Next page</a><br><br><br></center>
 </body>
 

@@ -2,14 +2,15 @@
 require 'sinatra/flash'
 
 post '/signup' do
-	@user = User.new(username: params[:username], password: params[:password], email: params[:email], first_name: params[:first_name], last_name: params[:last_name])
+	byebug
+	@user = User.new(params[:user])
 		@user.password
 		@user.save
 		if @user.save
-			flash[:notice] = "success"
-				erb :"static/index"
+			flash.now[:notice] = "Signup succesful"
+				redirect '/'
 		else
-			flash[:alert] = "error"
+			flash.now[:alert] = "Please fill in all the fields"
 				erb :"static/index"
 		end
 end
@@ -17,15 +18,19 @@ end
 # Creates a new hash based on the submitted password in the login. This hash is compared with the saved hash. 
 post '/login' do
 	@user = User.find_by_username(params[:username])
-	if @user.login(params[:password]) == true
-		session[:user] = true
+	if @user == nil
+		flash.now[:notice] = "Username incorrect"
+		erb :'static/index'
+	elsif @user.login(params[:password])
+		session[:user] = @user
 		session[:user_id] = @user.id
 		session[:user] = @user
 		session[:header] = @user.first_name
-		flash[:notice] = "succes"
-		redirect '/question_feed'
+		flash.now[:notice] = "Login succesful"
+		erb :'static/index'
 	else 
-		erb :'static/user_error'
+		flash.now[:notice] = "Password incorrect"
+		erb :'static/index'
  	end
 end
 
@@ -38,27 +43,38 @@ end
 
 # User home not accessible without session[:user] == true
 get '/user_home' do
-	halt(401, 'Not Authorized') unless user? 
+	if user? 
+		@answers = Answer.all
 		@questions = Question.all
+			@next_page = params[:page].to_i + 1
 		erb :'static/user_home'
-		
+	else
+		flash[:notice] = "Please signup or login"
+		erb :'static/index'
+	end
 end
 
 get '/logout' do
-	session[:user] = false
+	session.clear
 	session[:header] = "Welcome"
-	erb :'static/index'
+		erb :'static/index'
 end
 
 post '/feed' do
-	@questions = Question.all
-	erb :'static/question_feed'
+	@questions = Question.paginate(:page => params[:page]) 
+		@next_page = params[:page].to_i + 1
+		erb :'static/question_feed'
 end
 
-# get '/signup' do
-# 	erb :"static/user_signup"
-# end		## redundant. 
-# move to question 
+get '/profile/:user_id' do
+	@questions = Question.paginate(:page => params[:page])
+		@next_page = params[:page].to_i + 1
+		@user_profile = User.find(params[:user_id])
+		@answers = Answer.all
+		erb :'static/profile'
+		
+end
+
 
 
 

@@ -27,6 +27,8 @@ gem 'rspec'
 
 gem 'bcrypt'
 
+gem 'will_paginate', '~> 3.1.0'
+
 group :development, :test do
 	# Adding shotgun for local web hosting
 	gem 'shotgun'

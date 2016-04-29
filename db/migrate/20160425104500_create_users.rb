@@ -9,6 +9,8 @@ class CreateUsers < ActiveRecord::Migration
 			x.string :first_name
 			x.string :last_name
 			x.timestamps null: false
+			x.integer :no_questions, default: 0
+			x.integer :no_answers, default: 0
 		end
 	end
 end

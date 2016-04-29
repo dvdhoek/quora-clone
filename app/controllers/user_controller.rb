@@ -2,7 +2,7 @@
 require 'sinatra/flash'
 
 post '/signup' do
-	byebug
+
 	@user = User.new(params[:user])
 		@user.password
 		@user.save

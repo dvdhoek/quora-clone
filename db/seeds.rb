@@ -17,6 +17,13 @@ class Seed <ActiveRecord::Base
 			question_id = rand(1..500)
 			user_id = rand(1..300)
 			Answer.create(answer: text, question_id: question_id, user_id: user_id)
+			
+			@number = Question.find(question_id)
+
+			@number.no_answers += 1
+
+			
+			@number.save
 		end
 	end
 
@@ -31,5 +38,4 @@ class Seed <ActiveRecord::Base
 	end
 end
 
-Seed.question_seed
-
+Seed.user_seed

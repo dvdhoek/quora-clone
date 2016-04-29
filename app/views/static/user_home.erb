@@ -9,6 +9,9 @@
 			<p>Last name: <%= session[:user].last_name %></p>
 			<p>Email: <%= session[:user].email %></p>
 			<p>Username: <%= session[:user].username %></p>
+			<br>
+			<p>No of questions: <%= session[:user].questions.count %> </p>
+      		<p>No of answers: <%= session[:user].answers.count %> </p> 
 		</div>
 	</div>
 </center>
@@ -32,9 +35,8 @@
             <% question.answers.each do |answer| %>  
               <p id="answer-name-feed"> <%= User.find(answer.user_id).first_name %> </p>
               <p> <%= answer.answer %> </p>
-              <form method=post action="/upvote_answer/<%= answer.id %>" >
-                <input type=submit value="|<%= answer.upvotes_answer %>| Upvote answer">
-              </form>
+              <input type="hidden" name="output" value='<%= answer.id %>' id="output">
+                <input name="upvote-button" type=submit value="|<%= answer.upvotes_answer %>| Upvote answer">
             <% end %>
       		</div>
     		</div>
